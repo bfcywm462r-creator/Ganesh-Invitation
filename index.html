@@ -19,6 +19,8 @@
 </head>
 <body>
 <div class="frame">
+  <audio id="bgMusic" src="uploads/ganpati-music.mp3" loop preload="none"></audio>
+<button id="musicBtn" type="button" aria-label="Toggle music" style="position:fixed;top:16px;right:16px;z-index:999;width:44px;height:44px;border-radius:50%;border:none;background:rgba(0,0,0,0.4);color:#fff;font-size:20px;cursor:pointer;">🔇</button>
   <section class="hero" aria-label="Ganpati Bappa Morya">
     <video id="heroVideo" class="hero__video"
            src="uploads/Mouse_looking_at_rotating_Ganpati_202609051306.mp4"
@@ -133,6 +135,21 @@
     </div>
   </section>
 </div>
-<script src="app.js"></script>
+<script>
+  var musicBtn = document.getElementById('musicBtn');
+  var bgMusic = document.getElementById('bgMusic');
+  var playing = false;
+  musicBtn.addEventListener('click', function() {
+    if (playing) {
+      bgMusic.pause();
+      musicBtn.textContent = '🔇';
+    } else {
+      bgMusic.play();
+      musicBtn.textContent = '🔊';
+    }
+    playing = !playing;
+  });
+</script>
+  <script src="app.js"></script>
 </body>
 </html>
